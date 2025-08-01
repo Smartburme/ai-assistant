@@ -1,84 +1,233 @@
-📘 README.md – Burme-AI
+✅ README.md for ai-assistant Python Project
 
-# 🤖 Burme-AI
+# 🧠 AI Assistant
 
-Burme-AI is a smart Burmese-language AI assistant designed to support chat, image generation, and code generation. Built with Gemini API and Firebase, it provides a modern, user-friendly interface that works across web and mobile platforms.
-
-## 🚀 Features
-
-- 🔐 Firebase Auth (Login / Register / Reset Password)
-- 💬 Chatbot (Text, Image, Code generation via Gemini API)
-- 🖼️ Image Upload & Display
-- 📂 LocalStorage-based chat history
-- 🎨 Neon UI with Float3D design
-- 🧠 Smart Mode Switching (Text/Image/Code)
-- 🌐 Hosted via GitHub Pages / Cloudflare Pages
-
-## 📁 Project Structure
-```
-
-burme-ai/ ├── index.html              # 🔐 Login Page ├── register.html           # 📝 Register Page ├── reset.html              # 🔑 Reset Password Page ├── mainchat.html           # 🤖 Chat + Generator UI ├── about.html              # 📘 About Project (Loads README) ├── privacy.html            # 🔐 Privacy Policy & Terms ├── js/ │   ├── auth.js             # 🔐 Firebase Auth Logic │   ├── chat.js             # 💬 ChatBot Logic │   ├── gemini.js           # 🤖 Gemini API Integration │   ├── ui.js               # 🎨 UI + Sidebar + Float3D │   └── markdown.js         # 📘 README rendering ├── css/ │   └── style.css           # 🌈 Global Styles (Responsive + Neon) ├── assets/ │   └── icon.jpg            # 🌐 App Icon ├── .gitignore              # 🔒 Ignores .env and build files ├── README.md               # 📘 You are here!
-```
-## ⚙️ Setup Instructions
-
-### 1. Clone Repo
-
-```bash
-git clone https://github.com/your-username/burme-ai.git
-cd burme-ai
-
-2. Open in GitHub Codespaces
-
-Click Code > Open with Codespaces > Create New
-
-Use integrated terminal inside Codespaces
-
-
-3. Setup .env (For Gemini API)
-
-# In Codespaces terminal
-touch .env
-
-GEMINI_API_KEY=your_api_key_here
-
-Or set as environment variable in Cloudflare/GitHub Secrets.
-
-4. Run Locally
-
-If using Live Server extension or simple python:
-
-python3 -m http.server
-
-Visit: http://localhost:8000
-
-🛠️ Tech Stack
-
-HTML, CSS, JS (Vanilla)
-
-Firebase Auth
-
-Gemini API (Text/Image/Code)
-
-Cloudflare Pages / GitHub Pages
-
-
-🙋‍♂️ Contributing
-
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
-📄 License
-
-MIT License © 2025 Burme-AI
+AI Assistant is a modular, extensible Python-based assistant framework that uses NLP and a skill-based architecture to respond to user input. It supports command-line, REST API, and web-based interfaces, and comes with a set of built-in skills such as weather lookup, calculations, and reminders.
 
 ---
 
-သင့်အတွက် အထူးပြင်ဆင်ဖို့ `App name`, `username`, သို့မဟုတ် `Live URL` စတာတွေရှိရင် ပြောပါ — README ကို ပြန်ပြင်ပေးပါမယ်။  
-ဆက်လုပ်ဖို့ `README.md` ကို ဒီနည်းနဲ့ GitHub မှာ commit/push လုပ်နိုင်ပါတယ်:
+## ✨ Features
 
+- 🧠 Intent classification using a lightweight NLP engine
+- 💬 Dialog management and context handling
+- 📚 Knowledge base querying (JSON, SQLite)
+- 🔧 Built-in skills (weather, calculator, reminder)
+- 🧪 Pytest-based unit & integration testing
+- 🌐 REST API via FastAPI
+- 🖥️ CLI interface & web server
+- 🚀 CI/CD via GitHub Actions
+
+---
+
+## 🗂️ Project Structure
+```
+
+ai-assistant/
+│
+├── .github/                ← GitHub Actions (CI/CD)
+│   ├── workflows/
+│   │   ├── tests.yml       ← Pytest run on push/PR
+│   │   └── deploy.yml      ← Build & deploy automation
+│   └── ISSUE_TEMPLATE/     ← GitHub Issue templates
+│       └── bug_report.md
+│
+├── assistant/              ← Main Python package
+│   ├── core/               ← Core assistant logic
+│   │   ├── nlp_engine.py       ← Basic NLP intent classifier
+│   │   ├── dialog_manager.py  ← Handles conversation flow
+│   │   └── knowledge_base.py  ← Simple QA knowledge lookup
+│   │
+│   ├── skills/             ← Modular skills (can expand)
+│   │   ├── weather.py          ← Weather info (dummy now)
+│   │   ├── calculator.py       ← Math operations
+│   │   └── reminder.py         ← Reminder storage
+│   │
+│   ├── utils/              ← Helper functions
+│   │   ├── logger.py           ← Logger setup
+│   │   ├── config.py           ← Load config from file
+│   │   └── helpers.py          ← Math/utils
+│   │
+│   ├── interfaces/         ← Input/output interfaces
+│   │   ├── cli.py              ← Command Line Chat
+│   │   ├── web.py              ← FastAPI Web Server
+│   │   └── api.py              ← REST API (uses web.py)
+│   │
+│   └── __init__.py         ← Defines package
+│
+├── data/                   ← Static data files
+│   ├── models/             ← Trained ML models (ignored)
+│   │   └── nlp_model.h5        ← Dummy placeholder
+│   ├── knowledge/          ← Knowledge base info
+│   │   ├── faq.json             ← Common Q&A
+│   └── training/
+│       └── intents.json         ← For training NLP
+│
+├── tests/                  ← Pytest suite
+│   ├── unit/               ← Individual function tests
+│   │   ├── test_nlp.py
+│   │   └── test_skills.py
+│   └── integration/        ← Whole-system tests
+│       ├── test_dialog.py
+│       └── test_api.py
+│
+├── docs/                   ← Markdown documentation
+│   ├── architecture.md         ← System design overview
+│   ├── api.md                  ← REST API routes
+│   └── skills/
+│       ├── weather.md
+│       └── calculator.md
+│
+├── notebooks/              ← Jupyter notebooks
+│   ├── nlp_training.ipynb      ← NLP training notes
+│   └── analysis.ipynb          ← Performance results
+│
+├── scripts/                ← Utility scripts
+│   ├── setup_env.sh            ← Set up virtualenv
+│   └── train_model.py          ← Dummy model trainer
+│
+├── .env.example            ← Sample env variables
+├── .gitignore              ← Ignore compiled/cache files
+├── pyproject.toml          ← Python project setup config
+├── requirements.txt        ← Dependency list
+├── README.md               ← Project overview
+└── LICENSE                 ← MIT License
+# Project overview
+```
+---
+
+## 🚀 Getting Started
+
+### 🔧 Installation
+
+#### 1. Clone the repository
 ```bash
-git add README.md
-git commit -m "📝 Update README with project info"
-git push
+git clone https://github.com/your-username/ai-assistant.git
+cd ai-assistant
 
-ပြန်လိုချင်တာများပါက ဆက်မေးနိုင်ပါတယ်။
+2. Set up a virtual environment
+
+python3 -m venv venv
+source venv/bin/activate      # Windows: venv\Scripts\activate
+
+3. Install dependencies
+
+pip install -r requirements.txt
+
+4. Set up environment variables
+
+cp .env.example .env
+
+
+---
+
+💬 Usage
+
+1. Command Line Interface
+
+python assistant/interfaces/cli.py
+
+2. Run the Web API (FastAPI)
+
+uvicorn assistant.interfaces.web:app --reload
+
+Then open http://localhost:8000/docs to try the REST API.
+
+
+---
+
+🧪 Running Tests
+
+Run all unit and integration tests using pytest:
+
+pytest
+
+
+---
+
+⚙️ CI/CD
+
+This project uses GitHub Actions:
+
+.github/workflows/tests.yml: runs tests on push/pull requests
+
+.github/workflows/deploy.yml: deployment pipeline (customizable)
+
+
+
+---
+
+📚 Documentation
+
+Documentation is located in the /docs directory:
+
+architecture.md: system design
+
+api.md: REST API details
+
+skills/: skill-specific docs
+
+
+Jupyter notebooks for model training and analysis are in /notebooks.
+
+
+---
+
+📦 Packaging
+
+This project uses pyproject.toml. You can build it using:
+
+pip install build
+python -m build
+
+
+---
+
+🧩 Extending Skills
+
+To add a new skill:
+
+1. Create a new .py file in assistant/skills/
+
+
+2. Define a handle() function with the expected signature
+
+
+3. Register the skill in the dialog manager or skill router
+
+
+
+See calculator.py and reminder.py as examples.
+
+
+---
+
+🤝 Contributing
+
+Contributions are welcome!
+Please open issues, submit pull requests, or suggest features.
+
+
+---
+
+📝 License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+
+---
+
+📌 Author
+
+Developed by [Your Name or Organization]
+© 2025 AI Assistant Project
+
+---
+
+### ✍️ Note:
+
+- If you're using **Poetry** for packaging, the `pyproject.toml` will be your main config.
+- If deploying with **Docker**, you might want to add a `Dockerfile` and update the README accordingly.
+- You can customize the `Author`, `GitHub link`, and any project-specific setup or skills.
+
+ပြန်ပြင်ချင်တဲ့ section တစ်ခုတင်ရေးပေးလို့ရပါတယ် — ပြောပါ။
 
