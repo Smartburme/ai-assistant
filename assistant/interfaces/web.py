@@ -1,20 +1,19 @@
-"""FastAPI web interface (simple)."""
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from assistant.interfaces.api import router as api_router
 
-from fastapi import FastAPI
-from pydantic import BaseModel
-from assistant.core.nlp_engine import NLPEngine
-from assistant.core.dialog_manager import DialogManager
+app = FastAPI()
 
-app = FastAPI(title='AI Assistant')
+# Static & Templates
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="assistant/interfaces/templates")
 
-nlp = NLPEngine()
-dialog = DialogManager(nlp)
+# Main UI Route
+@app.get("/", response_class=HTMLResponse)
+async def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
-class Message(BaseModel):
-    user_id: str
-    text: str
-
-@app.post('/chat')
-def chat(msg: Message):
-    reply = dialog.process(msg.user_id, msg.text)
-    return {'reply': reply}
+# API route
+app.include_router(api_router)
