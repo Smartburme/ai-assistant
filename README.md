@@ -1,5 +1,7 @@
 # AI Assistant
-.(Picture)[docs/images/icon.jpg]
+
+.(Icon Picture)[docs/images/icon.jpg]
+
 ## Project Structure 
 ```
 # ai-assistant/
