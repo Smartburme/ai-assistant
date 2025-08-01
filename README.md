@@ -1,5 +1,3 @@
-✅ README.md for ai-assistant Python Project
-
 # 🧠 AI Assistant
 
 AI Assistant is a modular, extensible Python-based assistant framework that uses NLP and a skill-based architecture to respond to user input. It supports command-line, REST API, and web-based interfaces, and comes with a set of built-in skills such as weather lookup, calculations, and reminders.
