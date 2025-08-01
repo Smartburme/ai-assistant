@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Assistant</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#2196f3" />
+  <link rel="icon" href="assets/icon-192.png" />
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 3rem;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🤖 AI Assistant</h1>
+  <p>Type your question below:</p>
+  <input id="userInput" placeholder="Ask me anything..." />
+  <button onclick="handleInput()">Ask</button>
+  <p id="response"></p>
+
+  <script>
+    async function handleInput() {
+      const input = document.getElementById('userInput').value;
+      const responseEl = document.getElementById('response');
+      const res = await fetch(`/api?query=${encodeURIComponent(input)}`);
+      const data = await res.json();
+      responseEl.innerText = data.reply || "No response";
+    }
+  </script>
+</body>
+</html>
