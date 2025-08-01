@@ -15,9 +15,10 @@ Burme-AI is a smart Burmese-language AI assistant designed to support chat, imag
 - 🌐 Hosted via GitHub Pages / Cloudflare Pages
 
 ## 📁 Project Structure
+```
 
 burme-ai/ ├── index.html              # 🔐 Login Page ├── register.html           # 📝 Register Page ├── reset.html              # 🔑 Reset Password Page ├── mainchat.html           # 🤖 Chat + Generator UI ├── about.html              # 📘 About Project (Loads README) ├── privacy.html            # 🔐 Privacy Policy & Terms ├── js/ │   ├── auth.js             # 🔐 Firebase Auth Logic │   ├── chat.js             # 💬 ChatBot Logic │   ├── gemini.js           # 🤖 Gemini API Integration │   ├── ui.js               # 🎨 UI + Sidebar + Float3D │   └── markdown.js         # 📘 README rendering ├── css/ │   └── style.css           # 🌈 Global Styles (Responsive + Neon) ├── assets/ │   └── icon.jpg            # 🌐 App Icon ├── .gitignore              # 🔒 Ignores .env and build files ├── README.md               # 📘 You are here!
-
+```
 ## ⚙️ Setup Instructions
 
 ### 1. Clone Repo
